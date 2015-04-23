@@ -1,7 +1,8 @@
 package org.sample;
 
 import com.google.inject.servlet.GuiceFilter;
-import org.eclipse.jetty.server.*;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
 import javax.servlet.DispatcherType;
@@ -15,6 +16,8 @@ public class Main {
 
         handler.addEventListener(new AppConfig());
         handler.addFilter(GuiceFilter.class, "/*", EnumSet.allOf(DispatcherType.class));
+
+        handler.addServlet(DefaultServlet.class, "/");
 
         server.start();
         server.join();

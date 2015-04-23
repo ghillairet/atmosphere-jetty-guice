@@ -7,6 +7,6 @@ import com.google.inject.servlet.GuiceServletContextListener;
 public class AppConfig extends GuiceServletContextListener {
     @Override
     protected Injector getInjector() {
-        return Guice.createInjector(new AppModule());
+        return Guice.createInjector(new AppModule(), new AppServletModule());
     }
 }
